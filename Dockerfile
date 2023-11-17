@@ -1,4 +1,4 @@
-from node:20.9.0
+from node:20
 
 npm install -g pnpm
 
@@ -7,6 +7,6 @@ COPY . /src
 
 pnpm install
 
-from node:20.9.0
+from node:20
 
 pnpm run preview
