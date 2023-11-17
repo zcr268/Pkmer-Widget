@@ -1,4 +1,4 @@
-from node:20
+from node:20 as builder
 
 RUN npm install -g pnpm
 
@@ -9,4 +9,6 @@ RUN pnpm install
 
 from node:20
 WORKDIR /src
-RUN pnpm run preview
+COPY --from=builder /src /src
+
+ENTRYPOINT ["pnpm","run","preview"]
