@@ -1,12 +1,12 @@
 from node:20
 
-npm install -g pnpm
+RUN npm install -g pnpm
 
 WORKDIR /src
 COPY . /src
 
-pnpm install
+RUN pnpm install
 
 from node:20
-
-pnpm run preview
+WORKDIR /src
+RUN pnpm run preview
