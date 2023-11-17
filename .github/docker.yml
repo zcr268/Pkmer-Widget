@@ -1,0 +1,27 @@
+name: docker
+
+on: [push, pull_request,workflow_dispatch]
+
+env:
+  IMAGE_TAG: ${{ secrets.DOCKERHUB_USERNAME }}/Pkmer-Widget:Pkmer-Widget
+  
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v2.3.4
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v2.7.0
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          push: true
+          tags: ${{ env.IMAGE_TAG }}
