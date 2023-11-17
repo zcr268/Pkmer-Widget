@@ -3,7 +3,7 @@ name: docker
 on: [push, pull_request,workflow_dispatch]
 
 env:
-  IMAGE_TAG: ${{ secrets.DOCKERHUB_USERNAME }}/Pkmer-Widget:Pkmer-Widget
+  IMAGE_TAG: ${{ secrets.DOCKERHUB_USERNAME }}/pkmer-widget:pkmer-widget
   
 jobs:
   build:
