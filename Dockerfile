@@ -1,4 +1,4 @@
-from node:20 as builder
+FROM node:20 as builder
 
 WORKDIR /src
 COPY . /src
@@ -12,7 +12,7 @@ RUN npm run clean
 RUN npm run build
 RUN ls
 
-from node:20
+FROM node:20
 WORKDIR /src
 
 ENV HOST 0.0.0.0
